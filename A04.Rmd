@@ -1,0 +1,30 @@
+---
+title: "Assignment 04"
+author: "John W. Hoggard"
+date: "2020-09-10"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Read Chapters 5 and 6.  Chapter 6 is quite short, and is about using RStudio Projects to organize your work. Chapter 5 contains some wonderful examples of exploratory data analysis using both `ggplot` and `dplyr`.  This week's assignment asks you to perform a few basic examples.
+
+Written submission should be pushed to your repository on GitHub by the end of **Tuesday, 2020-09-15**.
+
+Create a new RMarkdown document (.Rmd file) in your GitHub repository in which you answer the following questions: 
+
+1. Return to the `iris` data set included in R.  Examine the distributions of `Sepal.Length` and `Sepal.Width`.  Produce a graph (or two) which represent these distributions.  What can you say about the variation of `Sepal.Length` and `Sepal.Width`?
+2. Examine how the categorical variable `Species` affects the distribution of `Sepal.Length` and `Sepal.Width`.  Produce a graph (or two) which shows clearly the relationship you would like to demonstrate.  Can the covariation here help explain some of the patterns we saw in first exploration?
+3. Examine the distribution of `Sepal.Width` now for data in only the species *virginica* in the data set.  What can you say about the distribution?
+
+When you have finished your work on this week's assingment, make sure you have:
+
+  *  Made at least one commit to your local repository with your completed assignment.  (You should probably commit whenever you finish a chunk of it.)
+  *  Pushed your results to your GitHub repository.  (You can check that you have succeeded by logging in to the GitHub website. You will see your most recent commits listed in your project repository on the web site.)
+  *  Make sure you have made your instructor (jhoggard@edinboro.edu) a collaborator on your GitHub repository, so that I can see your work.  You can do this by clicking on the "Settings" icon near the top of the page, and then clicking "Manage Access" in the left bar.
+    
+You should also start looking at a basic Exploratory Data Analysis on your data set selected for the first project.  What can you say about the distribution of some of the variables?  What can you say about covariation?
