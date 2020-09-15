@@ -1,0 +1,57 @@
+---
+title: "Assign_4"
+author: "Steph Glatch"
+date: "9/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+
+```{r}
+library(ggplot2)
+ggplot(data = iris) +
+  geom_point(aes(x = Sepal.Length, y = Sepal.Width), color = "red") +
+  geom_smooth(formula = y~x, aes(x = Sepal.Length, y = Sepal.Width),
+              method = "lm", se =FALSE)
+
+
+ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_ribbon(aes(ymin = Sepal.Width - Sepal.Length, ymax = Sepal.Width + Sepal.Length),
+              fill = "blue", alpha = .1) +
+  geom_line(color = "steelblue")
+
+ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_line()
+
+```
+
+# Problem 2
+
+```{r}
+ggplot(data = iris,
+       aes(
+          x = Sepal.Length,
+          y = Sepal.Width,
+           color = Species
+      )
+      ) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE, formula = y~x)
+
+ggplot(data= iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(formula = y~x, method = "lm", se = F) +
+  facet_wrap( ~ Species, nrow = 3)
+```
+
+# Problem 3
+
+
+
+
+
+
