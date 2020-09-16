@@ -16,18 +16,18 @@ library(ggplot2)
 ggplot(data = iris) +
   geom_point(aes(x = Sepal.Length, y = Sepal.Width), color = "red") +
   geom_smooth(formula = y~x, aes(x = Sepal.Length, y = Sepal.Width),
-              method = "lm", se =FALSE)
+              method = "lm", se =FALSE) +
+  labs(title = "Sepal Width VS Sepal Length")
 
-
-ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
-  geom_ribbon(aes(ymin = Sepal.Width - Sepal.Length, ymax = Sepal.Width + Sepal.Length),
-              fill = "blue", alpha = .1) +
-  geom_line(color = "steelblue")
-
-ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
-  geom_line()
+ggplot(iris) + 
+  geom_boxplot(aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  labs(title = "Sepal Width VS Sepal Length")
 
 ```
+
+This plot is comparing the sepal width to the sepal length from the Iris data set. The variations of the Sepal Length and Sepal Width are very spread out on this plot. The line of best fit is showing very diverse measurements in this data for the sepal length and sepal width. The Sepal width and length are not very consistent. In the second plot, the sepal width and length are shown in a more organized manor and can clearly differ which one is the length and which one is the width. It is evident how the sepal length and the sepal width are being measured and compared to each other. It still shows how the variations differ and are spread out from each other. 
+
+
 
 # Problem 2
 
@@ -40,18 +40,35 @@ ggplot(data = iris,
       )
       ) +
       geom_point() +
-      geom_smooth(method = "lm", se = FALSE, formula = y~x)
+      geom_smooth(method = "lm", se = FALSE, formula = y~x) +
+  labs(title = "Sepal Width VS Sepal Length with Species")
 
 ggplot(data= iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth(formula = y~x, method = "lm", se = F) +
-  facet_wrap( ~ Species, nrow = 3)
+  facet_wrap( ~ Species, nrow = 3) +
+  labs(title = "Sepal Width VS Sepal Length with Species")
 ```
+
+It is clearly shown that the categorical variable, Species, affects the distribution of Sepal Length and the Sepal Width in these plots. The covariation here helps explain some of the patterns we saw in first exploration. Such as, how varied the first plot seemed just by looking at it. These show a clear separation of each of the species by their sepal width and sepal length. In the second plot, there are distinct differences in the three species with the sepal length and sepal width. Setosa is shown as being the shortest but has a decent sized width. Then Versicolor is shown to be next for the longest length. That leaves Virginica as having the longest sepal length. The width of all of these are still pretty varied but a lot more similar than they appeared to be in the graphs from the first problem. 
+
 
 # Problem 3
 
+```{r}
+library(tidyverse)
+
+iris %>% 
+  group_by(iris = "Virginica", Sepal.Width) %>%
+  summarise(n = n())
+
+ggplot(iris) + 
+  geom_histogram(aes(x = Sepal.Width, Species = "Virginica"), 
+                 bins = 12) +
+  labs(title = "Distribution of Sepal Width for Virginica Species")
 
 
+```
 
-
+The distribution of the virginica sepal width seems pretty normal, the data being shown is only going from two to about four. Though, the graph is not very symmetric. The width of these seem to stay pretty consistent with each other.
 
