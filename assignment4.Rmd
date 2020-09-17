@@ -25,6 +25,21 @@ ggplot(iris) +
 
 ```
 
+<span style="color: green; font-size: 14pt">*Comments:*  
+        The scatterplot and trend lines do not actually give information on the distribution of either length or width; they show the *covariation* of length with width. (A few rough notions of distributions may be possible, but it is difficult to determine anything useful due to overplotting.)
+        Your second graph (the box plot) gives a reasonable view of the sepal width distribution, but only when broken up by species.  (You are also making your x-coordinate set as the sepal length, which is giving some hard to interpret information about that variable.)
+        Good choices for investigating individual variables would be histograms or boxplots. An example is produced below for Sepal.Length:
+    </span>
+    
+```{r}
+ggplot(iris) +
+  geom_histogram(
+    aes(x = Sepal.Length), binwidth = 0.3, fill = "lightblue", color = "darkblue"
+  ) + 
+  labs(title = "Alternate: Distribution of Sepal Lengths", x = "Sepal Length (cm)")
+```
+    
+    
 This plot is comparing the sepal width to the sepal length from the Iris data set. The variations of the Sepal Length and Sepal Width are very spread out on this plot. The line of best fit is showing very diverse measurements in this data for the sepal length and sepal width. The Sepal width and length are not very consistent. In the second plot, the sepal width and length are shown in a more organized manor and can clearly differ which one is the length and which one is the width. It is evident how the sepal length and the sepal width are being measured and compared to each other. It still shows how the variations differ and are spread out from each other. 
 
 
@@ -52,11 +67,23 @@ ggplot(data= iris, aes(x = Sepal.Length, y = Sepal.Width)) +
 
 It is clearly shown that the categorical variable, Species, affects the distribution of Sepal Length and the Sepal Width in these plots. The covariation here helps explain some of the patterns we saw in first exploration. Such as, how varied the first plot seemed just by looking at it. These show a clear separation of each of the species by their sepal width and sepal length. In the second plot, there are distinct differences in the three species with the sepal length and sepal width. Setosa is shown as being the shortest but has a decent sized width. Then Versicolor is shown to be next for the longest length. That leaves Virginica as having the longest sepal length. The width of all of these are still pretty varied but a lot more similar than they appeared to be in the graphs from the first problem. 
 
+<span style="color: green; font-size: 14pt">*Comments:*  
+        Same issue here as above: You are looking at the covariation between length and width, but broken down by species.  Converting the previous graph to something by species would give:
+    </span>
+    
+    ```{r}
+ggplot(iris) +
+  geom_histogram(
+    aes(x = Sepal.Length), binwidth = 0.3, fill = "lightblue", color = "darkblue"
+  ) + 
+  labs(title = "Alternate: Sepal Lengths by Species", x = "Sepal Length (cm)") +
+      facet_wrap( ~Species)
+```
 
 # Problem 3
 
 ```{r}
-library(tidyverse)
+library(tidyverse) # Note: only needs to be loaded once, at the top
 
 iris %>% 
   group_by(iris = "Virginica", Sepal.Width) %>%
@@ -71,4 +98,9 @@ ggplot(iris) +
 ```
 
 The distribution of the virginica sepal width seems pretty normal, the data being shown is only going from two to about four. Though, the graph is not very symmetric. The width of these seem to stay pretty consistent with each other.
+
+<span style="color: green; font-size: 14pt">*Comments:*  
+        This is a graph of of the overall, not for Virginica.  (Use a `filter` command before graphing to only select Virginica.)
+        I have no idea what the output of the `group_by` and `sumarise` statement is doing.  What were you attempting to produce?
+    </span>
 
